@@ -132,4 +132,19 @@ namespace cryptography {
 
         return returner;
     }
+
+    std::vector<std::vector<int>> to_t1x1s_invert(std::vector<std::vector<int>> original, std::vector<int> key) {
+        std::vector<std::vector<int>> returner;
+        returner = bits_manipulation::invert_bits(to_t1x1s(original, key));
+
+        return returner;
+    }
+    
+    std::vector<std::vector<int>> from_t1x1s_invert(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
+        std::vector<std::vector<int>> returner;
+
+        returner = from_t1x1s(bits_manipulation::invert_bits(encrypted), key);
+
+        return returner;
+    }
 }
