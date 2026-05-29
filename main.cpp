@@ -3,7 +3,8 @@
 #include <string>
 #include <vector>
 
-#include "lib.hpp"
+#include "bits_manipulation.hpp"
+#include "cryptography.hpp"
 
 void press_enter() {
     std::string null_poniter;
