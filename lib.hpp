@@ -193,10 +193,54 @@ namespace cryptography {
     }
 
     std::vector<std::vector<int>> to_t1x1s(std::vector<std::vector<int>> original, std::vector<int> key) {
-        return {};
+        std::vector<std::vector<int>> returner;
+        std::vector<int> ret;
+        std::vector<int> pos_vector;
+        int counter;
+        counter = 0;
+        returner = {};
+
+        if (key.size() != 8) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
+        for (int i = 0; i < key.size(); i++) {
+            if (key[i] == 1) {
+                pos_vector.push_back(i);
+            }
+        }
+
+        for (int x = 0; x < original.size(); x++) {
+            ret = {};
+            for (int y = 0; y < original[x].size(); y++) {
+                if (y == pos_vector[counter]) {
+                    if (original[x][y] == 0) {
+                        ret.push_back(1);
+                    } else {
+                        ret.push_back(0);
+                    }
+                } else {
+                    ret.push_back(original[x][y]);
+                }
+            }
+            returner.push_back(ret);
+
+            if (counter == pos_vector.size()-1) {
+                counter = 0;
+            } else {
+                counter++;
+            }
+        }
+
+        return returner;
     }
 
     std::vector<std::vector<int>> from_t1x1s(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
-        return {};
+        std::vector<std::vector<int>> returner;
+
+        returner = to_t1x1s(encrypted, key);
+
+        return returner;
     }
 }

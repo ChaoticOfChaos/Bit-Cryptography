@@ -32,6 +32,8 @@ int main() {
         std::cout << "(5) -> Decrypt from T1x1\n";
         std::cout << "(6) -> Encrypt to T1x1 + Invert Bits\n";
         std::cout << "(7) -> Decrypt from T1x1 + Invert Bits\n";
+        std::cout << "(8) -> Encrypt to T1x1s\n";
+        std::cout << "(9) -> Decrypt from T1x1s\n";
         std::cout << "(0) -> Close Program\n";
 
         std::cout << ">>> ";
@@ -127,6 +129,38 @@ int main() {
 
             input_file = bits_manipulation::txt_to_bits(input_file_name);
             output_file = cryptography::from_t1x1(bits_manipulation::invert_bits(input_file));
+            bits_manipulation::bits_to_txt(output_file_name, output_file);
+
+            press_enter();
+
+            break;
+            case 8:
+            std::cout << "Input File Name >>> ";
+            std::cin >> input_file_name;
+            std::cout << "Output File Name >>> ";
+            std::cin >> output_file_name;
+            std::cout << "Code (8 Bits) >>> ";
+            std::cin >> code_str;
+            code = bits_manipulation::convert_str_to_byte(code_str);
+            
+            input_file = bits_manipulation::txt_to_bits(input_file_name);
+            output_file = cryptography::to_t1x1s(input_file, code);
+            bits_manipulation::bits_to_txt(output_file_name, output_file);
+
+            press_enter();
+
+            break;
+            case 9:
+            std::cout << "Input File Name >>> ";
+            std::cin >> input_file_name;
+            std::cout << "Output File Name >>> ";
+            std::cin >> output_file_name;
+            std::cout << "Code (8 Bits) >>> ";
+            std::cin >> code_str;
+            code = bits_manipulation::convert_str_to_byte(code_str);
+
+            input_file = bits_manipulation::txt_to_bits(input_file_name);
+            output_file = cryptography::from_t1x1s(input_file, code);
             bits_manipulation::bits_to_txt(output_file_name, output_file);
 
             press_enter();
