@@ -93,5 +93,5 @@ Not end the "1" problem, but soft they.
 You can set two diferent types of this cryptography:
 Type 0 -> Starts with T1x1s
 Type 1 -> Starts with Inverted
-This cryptography has 65.025 diferent ways to encrypt the same file.
+This cryptography has 510 diferent ways to encrypt the same file.
 Files encrypted by Twisted are saved on the extension ".twstd"
