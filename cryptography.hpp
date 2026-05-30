@@ -147,4 +147,77 @@ namespace cryptography {
 
         return returner;
     }
+
+    std::vector<std::vector<int>> to_twisted(std::vector<std::vector<int>> original, std::vector<int> key) {
+        std::vector<std::vector<int>> returner;
+        std::vector<int> temp_byte;
+        std::vector<int> pos_vector;
+        int pos_counter;
+        int counter;
+        pos_counter = 0;
+        counter = 0;
+
+        for (int i = 0; i < key.size(); i++) {
+            if (key[i] == 1) {
+                pos_vector.push_back(i);
+            }
+        }
+
+        for (int x = 0; x < original.size(); x++) {
+            temp_byte = {};
+            for (int y = 0; y < original[x].size(); y++) {
+                if (counter == 0) {
+                    if (y == pos_vector[pos_counter]) {
+                        if (original[x][y] == 0) {
+                            temp_byte.push_back(1);
+
+                        } else if (original[x][y] == 1) {
+                            temp_byte.push_back(0);
+
+                        } else {
+                            temp_byte.push_back(original[x][y]);
+
+                        }
+
+                        if (pos_counter == pos_vector.size()-1) {
+                            pos_counter = 0;
+
+                        } else {
+                            pos_counter++;
+
+                        }
+                    } else {
+                        temp_byte.push_back(original[x][y]);
+
+                    }
+
+                } else {
+                    if (original[x][y] == 0) {
+                        temp_byte.push_back(1);
+
+                    } else {
+                        temp_byte.push_back(0);
+
+                    }
+                }
+            }
+            returner.push_back(temp_byte);
+
+            if (counter == 0) {
+                counter = 1;
+
+            } else {
+                counter = 0;
+
+            }
+        }
+
+        return returner;
+    }
+
+    std::vector<std::vector<int>> from_twisted(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
+        // EASTER EGG : Surprise! Its Just Take Same Path, But in Reverse.
+        // Yes, i know, i am the sloth in person ;)
+        return to_twisted(encrypted, key);
+    }
 }

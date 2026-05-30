@@ -91,6 +91,10 @@ namespace bits_manipulation {
             for (int bit : byte) {
                 std::cout << bit;
             }
+
+            if (byte.size() != 8) {
+                std::cout << " <- Not 8 Size Byte (" << byte.size() << ')';
+            }
             std::cout << std::endl;
         }
     }
