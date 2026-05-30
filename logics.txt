@@ -1,0 +1,78 @@
+- Inveted:
+Only invert the bit value.
+Ex:
+Original Bit : 00101001
+Encrypted Bit : 11010110
+
+This is not Secure, because all person that open the file to see the bits, will se something like this:
+11111010
+11110111
+11111100
+11111111
+
+And will notice the bits value inverted, because "0" is most commom than "1" in binary. And normally bytes starts with "0", not "1". So i called that problem, the "1" problem.
+Normally files Encrypted in Inverted are saved on the extension ".inv".
+
+
+
+- T1x1:
+T1x1 meas: "Type 1 per 1" because modify one bit per bit based on the key.
+Ex:
+Key : 00010001
+Original Bit : 00101001
+Encrypted Bit : 00111000
+
+Bits 4 and 8 they were modified.
+And this cryptography is NOT SO SECURE, because the keys is insert on the tail of file.
+This is the because no need the key to decrypt the file.
+Files Encrypted by T1x1 are saved on the extension ".t1x1".
+
+
+
+- T1x1 + Inverted:
+Is just T1x1 with Inverted Bits.
+Have the problem of both, the key included at the tail of file, and "1" problem.
+But someone that read the binary of the file, will think its just invert the value, but not.
+But if they know the T1x1, they will decrypt with "0" Problem.
+Yes, this was a joke.
+File encrypted with T1x1 + Inverted are saved on the extension ".t1x1.inv"
+
+
+
+- T1x1s:
+That is the secure version of T1x1. The great diference is the key not included at the tail of the file.
+So to Decrypt that file, you need the key.
+Normally, file encrypted by T1x1 are saved on the extension ".t1x1s".
+
+
+
+- T1x1s + Inverted:
+Its Just the same thing of T1x1 + Inverted, but with T1x1s insted.
+Files encrypted by T1x1s are saved on the extension ".t1x1s.inv"
+
+
+
+- Twisted:
+Its a fusion of T1x1s and Inverted.
+One byte is Encrypted with T1x1 and next with Inverted, softening the "1" problem.
+Ex:
+Original:
+01101000
+01100101
+01101100
+01101100
+01101111
+00001010
+
+Key : 00010001
+
+Encrypted:
+01111001
+10011010
+01111101
+10010011
+01111110
+11110101
+
+Not end the "1" problem, but soft they.
+Files encrypted by Twisted are saved on the extension ".twstd"
