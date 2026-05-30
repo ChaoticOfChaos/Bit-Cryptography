@@ -11,11 +11,13 @@ namespace cryptography {
         std::vector<std::vector<int>> returner;
         std::vector<int> ret;
         std::vector<int> pos_vector;
+        std::vector<int> trouble;
         int counter;
         counter = 0;
         returner = {};
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
 
-        if (code.size() != 8) {
+        if (code.size() != 8 || code == trouble) {
             std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
             return {};
         }
@@ -68,6 +70,12 @@ namespace cryptography {
     }
 
     std::vector<std::vector<int>> to_t1x1_invert(std::vector<std::vector<int>> original, std::vector<int> code) {
+        std::vector<int> trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+        if (code.size() != 8 || code == trouble) {
+            std::cerr << "[ERROR!] Code Length Error [ERROR!]\n";
+            return {};
+        }
+
         std::vector<std::vector<int>> returner;
         returner = to_t1x1(original, code);
         returner = bits_manipulation::invert_bits(returner);
@@ -85,11 +93,13 @@ namespace cryptography {
         std::vector<std::vector<int>> returner;
         std::vector<int> ret;
         std::vector<int> pos_vector;
+        std::vector<int> trouble;
         int counter;
         counter = 0;
         returner = {};
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
 
-        if (key.size() != 8) {
+        if (key.size() != 8 || key == trouble) {
             std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
             return {};
         }
@@ -126,6 +136,12 @@ namespace cryptography {
     }
 
     std::vector<std::vector<int>> from_t1x1s(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
+        std::vector<int> trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
         std::vector<std::vector<int>> returner;
 
         returner = to_t1x1s(encrypted, key);
@@ -134,6 +150,12 @@ namespace cryptography {
     }
 
     std::vector<std::vector<int>> to_t1x1s_invert(std::vector<std::vector<int>> original, std::vector<int> key) {
+        std::vector<int> trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
         std::vector<std::vector<int>> returner;
         returner = bits_manipulation::invert_bits(to_t1x1s(original, key));
 
@@ -142,6 +164,13 @@ namespace cryptography {
     
     std::vector<std::vector<int>> from_t1x1s_invert(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
         std::vector<std::vector<int>> returner;
+        std::vector<int> trouble;
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
 
         returner = from_t1x1s(bits_manipulation::invert_bits(encrypted), key);
 
@@ -152,10 +181,17 @@ namespace cryptography {
         std::vector<std::vector<int>> returner;
         std::vector<int> temp_byte;
         std::vector<int> pos_vector;
+        std::vector<int> trouble;
         int pos_counter;
         int counter;
         pos_counter = 0;
         counter = 0;
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
 
         for (int i = 0; i < key.size(); i++) {
             if (key[i] == 1) {
