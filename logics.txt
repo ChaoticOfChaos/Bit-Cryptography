@@ -16,13 +16,28 @@ Normally files Encrypted in Inverted are saved on the extension ".inv".
 
 
 - T1x1:
-T1x1 meas: "Type 1 per 1" because modify one bit per bit based on the key.
+T1x1 meas: "Type 1 per 1" because modify one bit of an byte based on the key.
 Ex:
-Key : 00010001
-Original Bit : 00101001
-Encrypted Bit : 00111000
+Original:
+01101000
+01100101
+01101100
+01101100
+01101111
+00001010
 
-Bits 4 and 8 they were modified.
+Key : 00010001
+
+Encrypted:
+01111000
+01100100
+01111100
+01101101
+01111111
+00001011
+00010001
+
+Bit 4 from frist byte and Bit 8 from secund they were modified.
 And this cryptography is NOT SO SECURE, because the keys is insert on the tail of file.
 This is the because no need the key to decrypt the file.
 Files Encrypted by T1x1 are saved on the extension ".t1x1".
@@ -54,7 +69,7 @@ Files encrypted by T1x1s are saved on the extension ".t1x1s.inv"
 
 - Twisted:
 Its a fusion of T1x1s and Inverted.
-One byte is Encrypted with T1x1 and next with Inverted, softening the "1" problem.
+One byte is Encrypted with T1x1s and next with Inverted, softening the "1" problem.
 Ex:
 Original:
 01101000
