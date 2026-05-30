@@ -177,7 +177,7 @@ namespace cryptography {
         return returner;
     }
 
-    std::vector<std::vector<int>> to_twisted(std::vector<std::vector<int>> original, std::vector<int> key) {
+    std::vector<std::vector<int>> to_twisted(std::vector<std::vector<int>> original, std::vector<int> key, int type) {
         std::vector<std::vector<int>> returner;
         std::vector<int> temp_byte;
         std::vector<int> pos_vector;
@@ -187,6 +187,12 @@ namespace cryptography {
         pos_counter = 0;
         counter = 0;
         trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+
+        if (type == 0 || type == 1) {
+            counter = type;
+        } else {
+            std::cerr << "[WARNING!] Type not Supported [WARNING!]\n";
+        }
 
         if (key.size() != 8 || key == trouble) {
             std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
@@ -251,9 +257,9 @@ namespace cryptography {
         return returner;
     }
 
-    std::vector<std::vector<int>> from_twisted(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
+    std::vector<std::vector<int>> from_twisted(std::vector<std::vector<int>> encrypted, std::vector<int> key, int type) {
         // EASTER EGG : Surprise! Its Just Take Same Path, But in Reverse.
         // Yes, i know, i am the sloth in person ;)
-        return to_twisted(encrypted, key);
+        return to_twisted(encrypted, key, type);
     }
 }

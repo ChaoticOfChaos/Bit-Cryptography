@@ -20,6 +20,7 @@ int main() {
     std::string output_file_name;
     std::string code_str;
     int opt;
+    int type;
     bool exit_key;
     exit_key = false;
 
@@ -210,10 +211,12 @@ int main() {
             std::cin >> output_file_name;
             std::cout << "Code (8 Bits) >>> ";
             std::cin >> code_str;
+            std::cout << "Type (0/1) >>> ";
+            std::cin >> type;
             code = bits_manipulation::convert_str_to_byte(code_str);
 
             input_file = bits_manipulation::txt_to_bits(input_file_name);
-            output_file = cryptography::to_twisted(input_file, code);
+            output_file = cryptography::to_twisted(input_file, code, type);
             bits_manipulation::bits_to_txt(output_file_name, output_file);
 
             press_enter();
@@ -226,10 +229,12 @@ int main() {
             std::cin >> output_file_name;
             std::cout << "Code (8 Bits) >>> ";
             std::cin >> code_str;
+            std::cout << "Type (0/1) >>> ";
+            std::cin >> type;
             code = bits_manipulation::convert_str_to_byte(code_str);
 
             input_file = bits_manipulation::txt_to_bits(input_file_name);
-            output_file = cryptography::from_twisted(input_file, code);
+            output_file = cryptography::from_twisted(input_file, code, type);
             bits_manipulation::bits_to_txt(output_file_name, output_file);
 
             press_enter();
