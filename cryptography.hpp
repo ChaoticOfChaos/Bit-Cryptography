@@ -262,4 +262,54 @@ namespace cryptography {
         // Yes, i know, i am the sloth in person ;)
         return to_twisted(encrypted, key, type);
     }
+
+    std::vector<std::vector<int>> to_t8x8(std::vector<std::vector<int>> original, std::vector<int> key) {
+        std::vector<int> vector_pos;
+        std::vector<int> trouble;
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+        int pos;
+
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
+        pos = 0;
+        for (int k : key) {
+            if (k == 1) {
+                vector_pos.push_back(pos);
+            }
+
+            pos++;
+        }
+
+        for (std::vector<int> &byte : original) {
+            for (int i : vector_pos) {
+                if (byte[i] == 0) {
+                    byte[i] = 1;
+
+                } else if (byte[i] == 1) {
+                    byte[i] = 0;
+
+                }
+            }
+        }
+
+        original.push_back(key);
+
+        return original;
+    }
+
+    std::vector<std::vector<int>> from_t8x8(std::vector<std::vector<int>> encrypted) {
+        std::vector<std::vector<int>> returner;
+        std::vector<int> key;
+
+        key = encrypted[encrypted.size()-1];
+        encrypted.pop_back();
+
+        returner = to_t8x8(encrypted, key);
+        returner.pop_back();
+
+        return returner;
+    }
 }

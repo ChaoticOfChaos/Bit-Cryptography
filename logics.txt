@@ -16,7 +16,7 @@ Normally files Encrypted in Inverted are saved on the extension ".inv".
 
 
 - T1x1:
-T1x1 meas: "Type 1 per 1" because modify one bit of an byte based on the key.
+T1x1 means: "Type 1 per 1" because modify one bit of an byte based on the key.
 Ex:
 Original:
 01101000
@@ -95,3 +95,29 @@ Type 0 -> Starts with T1x1s
 Type 1 -> Starts with Inverted
 This cryptography has 510 diferent ways to encrypt the same file.
 Files encrypted by Twisted are saved on the extension ".twstd"
+
+
+
+- T8x8:
+T8x8 means: "Type 8 per 8" because modify all the eight bits you use as key.
+Ex:
+Original:
+01101000
+01100101
+01101100
+01101100
+01101111
+00001010
+
+Key : 00010001
+
+Encrypted:
+01111001
+01110100
+01111101
+01111101
+01111110
+00011011
+00010001
+
+As you can see, the key is inserted as the last byte, as the same way T1x1 do.
