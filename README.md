@@ -1,5 +1,5 @@
 # Bits Manipulation Cryptography
-## Version Alpha-1.0
+## Version Alpha-1.0.1
 
 # What is Is?
 This is a bit manipulation key-based cryptography.
@@ -11,7 +11,7 @@ Modify only one bit from each byte<br>
 ->Can be decrypted without the key<-.<br>
 
 ## T1x1s (T1x1 Secure)
-Works as the Same Way as T8x8 but, secure.<br>
+Works as the Same Way as T1x1 but, secure.<br>
 ->Can't be decrypted without the key<-.<br>
 
 ## T8x8 (Type 8 per 8)
