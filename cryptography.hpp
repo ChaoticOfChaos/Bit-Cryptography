@@ -312,4 +312,55 @@ namespace cryptography {
 
         return returner;
     }
+
+    std::vector<std::vector<int>> to_t8x8s(std::vector<std::vector<int>> original, std::vector<int> key) {
+        std::vector<int> vector_pos;
+        std::vector<int> trouble;
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+        int pos;
+
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
+        pos = 0;
+        for (int k : key) {
+            if (k == 1) {
+                vector_pos.push_back(pos);
+            }
+
+            pos++;
+        }
+
+        for (std::vector<int> &byte : original) {
+            for (int i : vector_pos) {
+                if (byte[i] == 0) {
+                    byte[i] = 1;
+
+                } else if (byte[i] == 1) {
+                    byte[i] = 0;
+
+                }
+            }
+        }
+
+        return original;
+    }
+
+    std::vector<std::vector<int>> from_t8x8s(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
+        std::vector<int> trouble;
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0};
+
+        if (key.size() != 8 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
+        // Yes, I know. This is not good idea.
+        // But this is only "Beta" version. 
+        // Later i will change that issue and Impruve the code.
+        // I promisse ;)
+        return to_t8x8s(encrypted, key);
+    }
 }

@@ -121,3 +121,28 @@ Encrypted:
 00010001
 
 As you can see, the key is inserted as the last byte, as the same way T1x1 do.
+
+
+
+- T8x8s:
+T8x8s means: "Type 8 per 8 Secure" or "T8x8 Secure". because works as the same way t8x8 but not inserting the key as the last byte.
+Ex:
+Original:
+01101000
+01100101
+01101100
+01101100
+01101111
+00001010
+
+Key : 00010001
+
+Encrypted:
+01111001
+01110100
+01111101
+01111101
+01111110
+00011011
+
+As you can see, the file continues with only six bytes.

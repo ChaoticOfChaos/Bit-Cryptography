@@ -42,6 +42,8 @@ int main() {
         std::cout << "(13) -> Decrypt from Twisted\n";
         std::cout << "(14) -> Encrypt to T8x8\n";
         std::cout << "(15) -> Decrypt from T8x8\n";
+        std::cout << "(16) -> Encrypt to T8x8s\n";
+        std::cout << "(17) -> Decrypt from T8x8s\n";
         std::cout << "(0) -> Close Program\n";
 
         std::cout << ">>> ";
@@ -266,6 +268,38 @@ int main() {
 
             input_file = bits_manipulation::txt_to_bits(input_file_name);
             output_file = cryptography::from_t8x8(input_file);
+            bits_manipulation::bits_to_txt(output_file_name, output_file);
+
+            press_enter();
+
+            break;
+            case 16:
+            std::cout << "Input File Name >>> ";
+            std::cin >> input_file_name;
+            std::cout << "Output File Name >>> ";
+            std::cin >> output_file_name;
+            std::cout << "Code (8 Bits) >>> ";
+            std::cin >> code_str;
+            code = bits_manipulation::convert_str_to_byte(code_str);
+
+            input_file = bits_manipulation::txt_to_bits(input_file_name);
+            output_file = cryptography::to_t8x8s(input_file, code);
+            bits_manipulation::bits_to_txt(output_file_name, output_file);
+
+            press_enter();
+
+            break;
+            case 17:
+            std::cout << "Input File Name >>> ";
+            std::cin >> input_file_name;
+            std::cout << "Output File Name >>> ";
+            std::cin >> output_file_name;
+            std::cout << "Code (8 Bits) >>> ";
+            std::cin >> code_str;
+            code = bits_manipulation::convert_str_to_byte(code_str);
+
+            input_file = bits_manipulation::txt_to_bits(input_file_name);
+            output_file = cryptography::from_t8x8s(input_file, code);
             bits_manipulation::bits_to_txt(output_file_name, output_file);
 
             press_enter();
