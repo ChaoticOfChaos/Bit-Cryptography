@@ -1,5 +1,6 @@
 #!/bin/bash
 
-redhat-c++ main.cpp -o main.bin && ./main.bin
+# redhat-c++ is a alias for modified gcc included on RHEL
+g++ main.cpp -o main.bin && ./main.bin
 echo $?
 rm ./main.bin
