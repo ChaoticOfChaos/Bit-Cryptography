@@ -363,4 +363,74 @@ namespace cryptography {
         // I promisse ;)
         return to_t8x8s(encrypted, key);
     }
+
+    std::vector<std::vector<int>> to_t16x16(std::vector<std::vector<int>> original, std::vector<int> key) {
+        std::vector<std::vector<int>> returner;
+        std::vector<int> temp_byte;
+        std::vector<int> key_pos1;
+        std::vector<int> key_pos2;
+        int counter;
+        bool flip_switch;
+        std::vector<int> trouble;
+
+        trouble = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+        if (key.size() != 16 || key == trouble) {
+            std::cerr << "[ERROR!] Code Length Error! [ERROR!]\n";
+            return {};
+        }
+
+        counter = 0;
+        for (int k : key) {
+            if (counter < 8) {
+                if (k == 1) {
+                    key_pos1.push_back(counter);
+                }
+            } else {
+                if (k == 1) {
+                    key_pos2.push_back(counter);
+                }
+            }
+
+            counter++;
+        }
+
+        flip_switch = false;
+        for (std::vector<int> byte : original) {
+            if (!flip_switch) {
+                for (int pos : key_pos1) {
+                    if (byte[pos] == 1) {
+                        byte[pos] = 0;
+
+                    } else {
+                        byte[pos] = 1;
+
+                    }
+                }
+
+            } else {
+                for (int pos : key_pos2) {
+                    if (byte[pos] == 1) {
+                        byte[pos] = 0;
+
+                    } else {
+                        byte[pos] = 1;
+
+                    }
+                }
+            }
+
+            returner.push_back(byte);
+            flip_switch = !flip_switch;
+        }
+
+        std::cout << "ret size : " << returner.size() << std::endl;
+        return returner;
+    }
+
+    std::vector<std::vector<int>> from_t16x16(std::vector<std::vector<int>> encrypted, std::vector<int> key) {
+        // Yes, I know. Yes, Again.
+        // In future updates it will be fixed
+        return to_t16x16(encrypted, key);
+    }
 }

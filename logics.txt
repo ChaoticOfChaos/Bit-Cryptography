@@ -146,3 +146,10 @@ Encrypted:
 00011011
 
 As you can see, the file continues with only six bytes.
+
+
+
+- T16x16
+T16x16 means: "Type 16 per 16". Because It's the T8x8s but uses 16 bits key intead of 8 bits key.
+Is Already secure even without 's'.
+So files with 23 bytes continues with 23 bytes, because key is not included in the file.

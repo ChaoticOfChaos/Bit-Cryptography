@@ -118,4 +118,23 @@ namespace bits_manipulation {
         return returner;
     }
 
+    std::vector<int> convert_str_to_bits(std::string bits) {
+        std::vector<int> returner;
+        if (bits.size() < 1) {
+            std::cerr << "[ERROR!] Byte Size is Not 8 [ERROR!]\n";
+            return {0};
+        }
+        for (char c : bits) {
+            if (c == '0') {
+                returner.push_back(0);
+            } else if (c == '1') {
+                returner.push_back(1);
+            } else {
+                std::cerr << "[ERROR!] Bit is Not Binary [ERROR!]\n";
+                return {0};
+            }
+        }
+        return returner;
+    }
+
 }
